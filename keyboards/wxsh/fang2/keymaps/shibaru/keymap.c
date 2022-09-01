@@ -24,28 +24,49 @@
 enum layer {
     _COLE,
     _SPEC,
+    _HRDIV,
+    _SEC,
     _GAMING
 };
 
-//enum custom_keycodes {
-//};
+enum custom_keycodes {
+    KC_SHCT = SAFE_RANGE,
+};
+
 
 #define KC_TGLS LT(_SPEC, KC_SPACE)
+#define KC_TGLSE LT(_SEC, KC_SPACE)
+#define KC_TGLHR LT(_HRDIV, KC_SPACE)
+#define LSSHC LSFT_T(KC_SHCT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLE] = LAYOUT(
-                 KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,     KC_5,  KC_A,                                        KC_C,    KC_6,      KC_7,    KC_8,    KC_9,    KC_0,     TG(_COLE),
-                 KC_TAB,   KC_Q,    KC_W,    KC_F,    KC_P,     KC_B,  KC_B,                                        KC_D,    KC_J,      KC_L,    KC_U,    KC_Y,    KC_SCLN,  XXXXXXX,
-        	     KC_BSPC,  KC_A,    KC_R,    KC_S,    KC_T,     KC_G,                                                        KC_M,      KC_N,    KC_E,    KC_I,    KC_O,     KC_ESC,
-                 KC_LCTRL, KC_Z,    KC_X,    KC_C,    KC_D,     KC_V,     KC_MUTE,  KC_LGUI,               KC_INS,  KC_MUTE, KC_K,      KC_H,    KC_COMM, KC_DOT,  KC_SLASH, TG(_GAMING),
-                                             KC_LALT, KC_LSFT,  KC_SPACE, KC_ENT,   KC_LGUI,               XXXXXXX, KC_ENT,  KC_TGLS,   KC_DEL,  KC_PSCR
+                 KC_ESC,   KC_1,    KC_2,    KC_3,     KC_4,     KC_5,     KC_A,                                     KC_C,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0,     TG(_COLE),
+                 KC_TAB,   KC_Q,    KC_W,    KC_F,     KC_P,     KC_B,     KC_B,                                     KC_D,    KC_J,    KC_L,     KC_U,    KC_Y,    KC_SCLN,  XXXXXXX,
+        	     KC_BSPC,  KC_A,    KC_R,    KC_S,     KC_T,     KC_G,                                                        KC_M,    KC_N,     KC_E,    KC_I,    KC_O,     KC_ESC,
+                 LSSHC,    KC_Z,    KC_X,    KC_C,     KC_D,     KC_V,     KC_MUTE,  KC_LGUI,              KC_INS,   KC_MUTE, KC_K,    KC_H,     KC_COMM, KC_DOT,  KC_SLASH, TG(_GAMING),
+                                             KC_LCTRL, KC_LGUI,  KC_SPACE, KC_TGLHR, KC_LALT,              XXXXXXX,  KC_ENT,  KC_TGLS, KC_TGLSE, KC_PSCR
     ),
     [_SPEC] = LAYOUT(
-                 _______, KC_F1,      KC_F2,    KC_F3,    KC_F4,       KC_F5,       KC_F11, 		                   KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
-                 _______, KC_EXCLAIM, KC_AT,    KC_HASH,  KC_DOLLAR,   KC_PERCENT,  _______,                           _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_TILDE, KC_GRV,  XXXXXXX,
-        	     _______, KC_LBRC,    KC_RBRC,  KC_LPRN,  KC_RPRN,     KC_EQUAL,                                                KC_QUES, KC_LCBR, KC_RCBR, KC_COLN,  KC_SCLN, _______,
-                 _______, KC_LABK,    KC_RABK,  KC_QUOTE, KC_DQUO,     KC_BSLS,     _______, _______,         _______, _______, KC_PIPE, KC_MINS, KC_UNDS, KC_PLUS,  _______, _______,
-                                                 _______, _______,     _______,     _______, _______,         _______, _______, XXXXXXX, _______, _______
+                 _______, KC_F1,      KC_F2,    KC_F3,    KC_F4,     KC_F5,       KC_F11, 		                     KC_F12,  KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  _______,
+                 _______, KC_EXCLAIM, KC_AT,    KC_HASH,  KC_DOLLAR, KC_PERCENT,  _______,                           _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_TILDE, KC_GRV,  XXXXXXX,
+        	     _______, KC_LBRC,    KC_RBRC,  KC_LPRN,  KC_RPRN,   XXXXXXX,                                                 KC_QUES, KC_LCBR, KC_RCBR, KC_COLN,  KC_SCLN, _______,
+                 _______, XXXXXXX,    XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_BSLS,     _______, _______,         _______, _______, XXXXXXX, KC_PLUS, KC_PIPE, XXXXXXX,  _______, _______,
+                                                 _______, _______,   _______,     _______, _______,         _______, _______, XXXXXXX, _______, _______
+    ),
+    [_HRDIV] = LAYOUT(
+                 _______, _______,    _______,  _______,  _______, _______, _______,   		                        _______, _______, _______,  _______, _______,  _______,  _______,
+                 _______, _______,    _______,  _______,  _______, _______, _______,                                _______, _______, _______,  _______, _______,  _______,  _______,
+        	     _______, KC_EXCLAIM, KC_EQUAL, KC_QUOTE, KC_DQUO, KC_EQUAL,                                                KC_QUES, KC_MINUS, KC_UNDS, KC_LABK,  KC_RABK,  _______,
+                 _______, _______,    _______,  _______, _______,  _______, _______, _______,             _______, _______, _______, _______,   _______, _______,  _______,  _______,
+                                                _______, _______,  _______, _______, _______,             _______, _______, XXXXXXX, _______,   _______
+    ),
+    [_SEC] = LAYOUT(
+                 _______, _______,    _______,  _______,  _______, _______,  _______, 		                       _______, _______, _______, _______, _______,  _______,  _______,
+                 _______, _______,    _______,  _______,  _______, _______,  _______,                              _______, _______, _______, _______, _______,  _______,  _______,
+                 _______, _______,    _______,  _______,  _______, _______,                                        _______, KC_LEFT, KC_DOWN,  KC_UP,   KC_RIGHT, _______,
+                 _______, _______,    _______,  _______,  _______, _______,  _______, _______,            _______, _______, _______, _______, _______, _______, _______,  _______,
+                                                _______,  _______, _______,  _______, _______,            _______, _______, XXXXXXX, _______, _______
     ),
     [_GAMING] = LAYOUT(
                  KC_ESC,   KC_1,    KC_2,    KC_3,     KC_4,     KC_5,  KC_GRV,                                       KC_C,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
@@ -55,6 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              KC_LALT,  KC_SPACE, KC_M,  KC_LALT,  XXXXXXX,                   XXXXXXX, KC_ENT,  XXXXXXX, KC_DEL,  KC_PSCR
     ),
 };
+
 
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     //switch (keycode) {
@@ -70,6 +92,12 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        case LSFT_T(KC_SHCT):
+            if (record->tap.count && record->event.pressed) {
+                set_oneshot_mods(MOD_BIT(KC_LCTRL));
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
         case KC_COPY:
             if (record->event.pressed) {
                 register_mods(mod_config(MOD_LCTL));
