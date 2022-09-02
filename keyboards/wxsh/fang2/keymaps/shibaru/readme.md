@@ -1,1 +1,1 @@
-# The default keymap for fang2
+# The shibaru keymap for fang2

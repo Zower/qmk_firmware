@@ -42,7 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define SOFT_SERIAL_PIN D2  // or D1, D2, D3, E6
 
-#define TAPPING_TERM 100
+#define TAPPING_TERM 150
 #define DEBOUNCE 5
 #define TAP_CODE_DELAY 10
 
